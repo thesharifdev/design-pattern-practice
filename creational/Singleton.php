@@ -12,12 +12,14 @@
     private static $instance;
 
     private function __construct(){
-        //prevent new instance from outside of the class
+        echo "New instance \n";
     }
 
     public static function getInstance(){
         if( !isset(self::$instance) ){
             self::$instance = new self();
+        }else{
+            echo "Old instance returned \n";
         }
 
         return self::$instance;
@@ -28,5 +30,7 @@
     }
  }
 
- $instance = Singleton::getInstance();
- echo $instance->doSomething();
+ Singleton::getInstance();
+ Singleton::getInstance();
+ Singleton::getInstance();
+ Singleton::getInstance();
