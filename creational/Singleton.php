@@ -11,11 +11,13 @@
 
     private static $instance;
 
-    private function __construct(){
+    private function __construct()
+    {
         echo "New instance \n";
     }
 
-    public static function getInstance(){
+    public static function getInstance()
+    {
         if( !isset(self::$instance) ){
             self::$instance = new self();
         }else{
@@ -25,7 +27,8 @@
         return self::$instance;
     }
 
-    public function doSomething(){
+    public function doSomething()
+    {
         return "Hello from singleton class";
     }
  }
@@ -34,3 +37,28 @@
  Singleton::getInstance();
  Singleton::getInstance();
  Singleton::getInstance();
+
+
+/**
+ * Singleton pattern with constructor parameter
+ */
+
+ class Singleton2 {
+
+    private static $instance = [];
+    private $name;
+
+    private function __construct()
+    {
+        //prevent direct instantiation of the class
+    }
+
+    public static function getInstance( $name ) 
+    {
+        if( !isset(self::$instance[$name])){
+            self::$instance[$name] = new self($name);
+        }
+
+        return self::$instance[$name];
+    }
+ }
